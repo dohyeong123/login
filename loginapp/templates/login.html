@@ -1,0 +1,40 @@
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+<html>
+<head>
+<title>Login Form: Easy Tutorials Hindi</title>  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+</head>
+<body>
+
+<div class="form-box">
+    
+    <h2>Login Here</h2>
+    <form method="POST" action="{% url 'home' %}">
+            {% csrf_token %}
+        <div class="input-group">
+            <label>Username</label>
+            <input type="text">
+        </div>
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password">
+        </div>
+        <button type="submit">Submit &#10132;</button>
+        
+    </form>  
+    <p>Login in with social media account</p>
+    <div class="social">
+        <a href="{% provider_login_url 'facebook' %}"><img src="{% static 'png/facebook.png' %}"></a>
+        <a href="{% provider_login_url 'naver' %}"><img src="{% static 'png/naver.png' %}"></a>
+        <a href="{% provider_login_url 'google' %}"><img src="{% static 'png/google.png' %}"></a>
+        <a href="{% provider_login_url 'kakao' %}"><img src="{% static 'png/kakao1.png' %}"></a>
+    </div>
+</div>
+    
+    
+</body>
+</html>
