@@ -21,9 +21,8 @@ def login(request):
 def signup(request):
     if request.method == 'POST':
         if request.POST['password1']==request.POST['password2']:
-            user=User.objects.create_user(
-                request.POST['username'], password=request.POST['password1'])
-            auth.login(request, user)
+            user=User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+            auth.login(request, user,backend='django.contrib.auth.backends.ModelBackend')#backend 추가해주기!!!!!!
             return redirect('home')
     return render(request, 'signup.html')
 

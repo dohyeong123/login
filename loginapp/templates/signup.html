@@ -11,8 +11,8 @@
 
 <div class="form-box">
     
-    <h2>Login Here</h2>
-    <form method="POST" action="{% url 'signup' %}">
+    <h2>Signup Here</h2>
+    <form method='POST' action="{% url 'signup' %}">
             {% csrf_token %}
         <div class="input-group">
             <label>Username</label>
@@ -29,7 +29,6 @@
         <button type="submit">Submit &#10132;</button>
         
     </form>  
-    <p>Login in with social media account</p>
     <div class="social">
     </div>
 </div>
