@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'wq2cp6n^lo7ro8+rb%$7x(i_2%7p!kdrnzjd$0xdm@#5730n5e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'loginproject.urls'
@@ -148,3 +149,7 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
+import dj_database_url
+
+DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
